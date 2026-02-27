@@ -1,0 +1,99 @@
+name: Plugin Request
+description: Request a new plugin for the Conductor marketplace
+title: "[Plugin Request] <service name>"
+labels: ["plugin-request"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Want a plugin that doesn't exist yet? Tell us about it. Upvote existing requests with 👍 before opening a new one.
+
+  - type: input
+    id: service-name
+    attributes:
+      label: Service or tool name
+      placeholder: e.g. Linear, Airtable, Todoist, Jira
+    validations:
+      required: true
+
+  - type: input
+    id: service-url
+    attributes:
+      label: Service website
+      placeholder: e.g. https://linear.app
+    validations:
+      required: true
+
+  - type: textarea
+    id: use-case
+    attributes:
+      label: What would you use it for?
+      description: Describe the specific things you'd want to do with this plugin through Conductor.
+      placeholder: |
+        I want to be able to ask Conductor to create Linear issues from Slack messages, check my open issues, and update issue status. Mainly for project management in my team.
+    validations:
+      required: true
+
+  - type: textarea
+    id: tools
+    attributes:
+      label: What tools should the plugin have?
+      description: List the specific actions you'd want the plugin to be able to take.
+      placeholder: |
+        - Create an issue with title, description, and priority
+        - List my open issues
+        - Update issue status (todo/in progress/done)
+        - Assign an issue to a team member
+        - Search issues by title or label
+    validations:
+      required: true
+
+  - type: dropdown
+    id: api-available
+    attributes:
+      label: Does this service have a public API?
+      options:
+        - "Yes — it has a well-documented REST or GraphQL API"
+        - "Yes — but the API is limited or poorly documented"
+        - "Not sure"
+        - "No public API"
+    validations:
+      required: true
+
+  - type: input
+    id: api-docs
+    attributes:
+      label: API docs URL (if known)
+      placeholder: e.g. https://linear.app/docs/api
+
+  - type: dropdown
+    id: auth-type
+    attributes:
+      label: How does the API authenticate?
+      options:
+        - API key
+        - OAuth 2.0
+        - Personal access token
+        - Other / not sure
+    validations:
+      required: true
+
+  - type: dropdown
+    id: willing-to-build
+    attributes:
+      label: Would you be willing to build this plugin?
+      description: Not required — just helpful to know. See CONTRIBUTING.md if yes.
+      options:
+        - "Yes, I'd like to build it"
+        - "Maybe, with some guidance"
+        - "No, just requesting"
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Anything else?
+      description: Existing similar plugins, related issues, urgency, context, etc.

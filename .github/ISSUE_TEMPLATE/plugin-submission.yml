@@ -1,0 +1,121 @@
+name: Plugin Submission
+description: Submit a new plugin for inclusion in the Conductor marketplace
+title: "[Plugin Submission] <plugin-id>"
+labels: ["plugin-submission"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for building a Conductor plugin! Please read [CONTRIBUTING.md](../CONTRIBUTING.md) and [docs/plugin-authoring.md](../docs/plugin-authoring.md) before submitting.
+
+        All plugins are reviewed for security and quality before being added to the registry. This typically takes 2–5 business days.
+
+  - type: input
+    id: plugin-id
+    attributes:
+      label: Plugin ID
+      description: Lowercase, hyphenated, unique. This is what users will type in `conductor install <id>`.
+      placeholder: e.g. linear, airtable, todoist
+    validations:
+      required: true
+
+  - type: input
+    id: plugin-name
+    attributes:
+      label: Plugin display name
+      placeholder: e.g. Linear, Airtable, Todoist
+    validations:
+      required: true
+
+  - type: input
+    id: pr-link
+    attributes:
+      label: Link to your PR
+      placeholder: https://github.com/thealxlabs/conductor-plugins/pull/123
+    validations:
+      required: true
+
+  - type: input
+    id: service-url
+    attributes:
+      label: Service website
+      placeholder: e.g. https://linear.app
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: What does this plugin do?
+      description: One to three sentences. This will appear on the marketplace.
+      placeholder: Manage Linear issues, projects, and cycles. Create, update, and search issues directly from Conductor.
+    validations:
+      required: true
+
+  - type: textarea
+    id: tools-list
+    attributes:
+      label: List of tools included
+      description: All tool names your plugin exposes.
+      placeholder: |
+        - linear_create_issue
+        - linear_list_issues
+        - linear_update_issue
+        - linear_search
+        - linear_teams
+    validations:
+      required: true
+
+  - type: dropdown
+    id: auth-type
+    attributes:
+      label: Authentication method
+      options:
+        - API key stored in keychain
+        - OAuth 2.0 (uses conductor google / custom flow)
+        - Personal access token stored in keychain
+        - No authentication required
+        - Other
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Submission checklist
+      description: Please confirm all of these before submitting.
+      options:
+        - label: My plugin compiles with `tsc --noEmit` — zero errors
+          required: true
+        - label: The compiled `dist/<id>.js` is committed and up to date
+          required: true
+        - label: My plugin has a `README.md` with setup instructions and a tool reference
+          required: true
+        - label: All tools that write or delete data have `requiresApproval: true`
+          required: true
+        - label: My plugin does not log or transmit credentials anywhere
+          required: true
+        - label: My plugin only makes network requests to the service it integrates with
+          required: true
+        - label: I've tested the plugin locally with real credentials
+          required: true
+        - label: I've read CONTRIBUTING.md and SECURITY.md
+          required: true
+
+  - type: textarea
+    id: testing-notes
+    attributes:
+      label: Testing notes
+      description: How did you test this? Any edge cases or known limitations reviewers should know about?
+      placeholder: |
+        Tested with a personal Linear workspace. The linear_search tool requires at least 3 characters. Rate limits are handled gracefully — returns a clear error message if hit.
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Anything else?
+      description: Dependencies added, future plans, anything that might need extra scrutiny, etc.

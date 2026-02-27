@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security vulnerability
+    url: https://github.com/thealxlabs/conductor-plugins/blob/main/SECURITY.md
+    about: Do not open public issues for security vulnerabilities. See SECURITY.md.
+  - name: Conductor core issues
+    url: https://github.com/thealxlabs/conductor/issues
+    about: For issues with Conductor itself (not a plugin), go to the main repo.
+  - name: Marketplace
+    url: https://conductor.thealxlabs.ca/marketplace
+    about: Browse all available plugins.

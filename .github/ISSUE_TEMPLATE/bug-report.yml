@@ -1,0 +1,108 @@
+name: Bug Report
+description: Report a bug in an existing plugin
+title: "[Bug] <plugin>: <short description>"
+labels: ["bug"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a bug. Please fill out as much as you can — it helps us fix things faster.
+
+        **Security issue?** Do not use this form. See [SECURITY.md](../SECURITY.md) instead.
+
+  - type: dropdown
+    id: plugin
+    attributes:
+      label: Which plugin?
+      options:
+        - gmail
+        - gcal
+        - gdrive
+        - github
+        - github-actions
+        - notion
+        - slack
+        - spotify
+        - vercel
+        - n8n
+        - weather
+        - x
+        - homekit
+        - other
+    validations:
+      required: true
+
+  - type: input
+    id: plugin-other
+    attributes:
+      label: If "other", which plugin?
+      placeholder: e.g. my-custom-plugin
+
+  - type: input
+    id: conductor-version
+    attributes:
+      label: Conductor version
+      placeholder: e.g. 1.2.0 (run `conductor version`)
+    validations:
+      required: true
+
+  - type: input
+    id: node-version
+    attributes:
+      label: Node.js version
+      placeholder: e.g. 20.11.0 (run `node --version`)
+    validations:
+      required: true
+
+  - type: input
+    id: os
+    attributes:
+      label: Operating system
+      placeholder: e.g. macOS 14.3, Ubuntu 22.04, Windows 11
+    validations:
+      required: true
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: A clear description of the bug. What did you try to do, and what went wrong?
+      placeholder: |
+        I ran `conductor install gmail` and then tried to use `gmail_send`. It returned an error saying...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect to happen?
+      placeholder: I expected the email to be sent and to receive a confirmation.
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Install the plugin with `conductor install gmail`
+        2. Enable it with `conductor plugins enable gmail`
+        3. Ask Conductor to send an email
+        4. See error
+    validations:
+      required: true
+
+  - type: textarea
+    id: error-output
+    attributes:
+      label: Error output or logs
+      description: Paste any error messages or logs here. Do not include API keys or credentials.
+      render: shell
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Anything else?
+      description: Screenshots, related issues, things you already tried, etc.
