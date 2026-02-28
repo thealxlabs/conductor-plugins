@@ -1,0 +1,16 @@
+{
+  "name": "@conductor-plugins/n8n",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "dist/n8n.js",
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@conductor-plugins/shared": "*"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
